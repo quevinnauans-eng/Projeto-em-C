@@ -18,7 +18,7 @@ notas de alunos de forma simples e organizada.
 - VS Code
 
 ## 👨‍💻 Autor
-- Quevin Nauan Silva
+- Quevin Nauan Silva.
   Estudante de Análise e Desenvolvimento de Sistemas - IFBA.
 
 ## ▶️ Como Executar
