@@ -20,7 +20,7 @@ Desenvolvido utilizando linguagem C e programação estruturada.
 - Quevin Silva
 - Diego
 - João Kenedy
-- Luara Silva
+- Luara 
 
 ## 🛠️ Tecnologias
 
