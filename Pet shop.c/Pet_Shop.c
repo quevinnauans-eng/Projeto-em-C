@@ -14,12 +14,12 @@ void imprimirAdocao(char especieAnimal[][TAM], int *quantidadeAnimal, char corAn
 void imprimirDisponiveis(char especieAnimal[][TAM], int *quantidadeAnimal, char corAnimal[][TAM], int idadeAnimal[], int idAnimal[], int statusAdocao[]);
 void limparBuffer();
 /*
-    FunÁ„o main exibe 6 escolhas para o usuario que vai de 1 at√© 6
+    Fun√ß√£o main exibe 6 escolhas para o usuario que vai de 1 at√É¬© 6
     Armazena a escolha na variavel escolha
     Depois entramos em um switch case que depende do valor da escolha
-    Valores de 1 a 5 chamam uma FunÁ„o diferente
+    Valores de 1 a 5 chamam uma Fun√ß√£o diferente
     Valor 6 fecha o programa
-    Qualquer outro valor o programa avisa que È um valor invalido e volta ao comeÁo
+    Qualquer outro valor o programa avisa que √© um valor invalido e volta ao come√ßo
 */
 int main(){
     setlocale(LC_ALL,"Portuguese");
@@ -37,13 +37,13 @@ int main(){
         printf("                                   | |    \n");
         printf("                                   |_|    \n\n");
         printf("  1. Cadastrar Animal\n");
-        printf("  2. Registrar adoÁ„o\n");
+        printf("  2. Registrar ado√ß√£o\n");
         printf("  3. Pesquisar animal\n");
-        printf("  4. Imprimir relatÛrio de adoÁıes\n");
-        printf("  5. Imprimir relatÛrio de animais disponÌveis\n");
+        printf("  4. Imprimir relat√≥rio de ado√ß√µes\n");
+        printf("  5. Imprimir relat√≥rio de animais dispon√≠veis\n");
         printf("  6. Sair\n\n");
         (escolhaErrada == 1) ? (printf("  Valor invalido\n\n"), escolhaErrada = 0) : 0;
-        printf("  Escolha uma opÁ„o:  ");
+        printf("  Escolha uma op√ß√£o:  ");
         scanf("%d", &escolha);
         limparBuffer();
         
@@ -76,11 +76,14 @@ void cadastrarAnimal(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
     system(clear);
     if(*quantidadeAnimal == MAX){
             printf("\nLimite de animais atingido!\n");
+		while(getchar() != '\n');
+    	printf("\nPressione ENTER para continuar ...");
+    	getchar();
             return;
         }
             printf("\n===== CADASTRAR ANIMAL =====\n");
 
-        printf("\nInforme a EspÈcie: ");
+        printf("\nInforme a Esp√©cie: ");
         fgets(especieAnimal[*quantidadeAnimal], TAM, stdin);
         especieAnimal[*quantidadeAnimal][strcspn(especieAnimal[*quantidadeAnimal], "\n")] = '\0';
 
@@ -94,7 +97,7 @@ void cadastrarAnimal(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
 
         idAnimal[*quantidadeAnimal] = *quantidadeAnimal + 1;
 
-        printf("Animal com cÛdigo: %d\n", *quantidadeAnimal + 1);
+        printf("Animal com c√≥digo: %d\n", *quantidadeAnimal + 1);
 
         statusAdocao[*quantidadeAnimal] = 0;
         (*quantidadeAnimal)++;
@@ -110,22 +113,22 @@ void registrarAdocao(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
 	int codigo_busca;
 	int encontrado = 0;
 	if(*quantidadeAnimal == 0){
-		printf("\n===== N√O H¡ ANIMAIS DISPONÕVEIS PARA ADO«√O =====\n");
+		printf("\n===== N√ÉO H√Å ANIMAIS DISPON√çVEIS PARA ADO√á√ÉO =====\n");
 	}else{
-		printf("\n===== REGISTRAR ADO«√O =====\n");
-		printf("Digite o cÛdigo do animal para adoÁ„o: ");
+		printf("\n===== REGISTRAR ADO√á√ÉO =====\n");
+		printf("Digite o c√≥digo do animal para ado√ß√£o: ");
 		scanf(" %d", &codigo_busca);
         limparBuffer();
         
 		for(int i = 0; i < *quantidadeAnimal; i++){
 		       if(idAnimal[i] == codigo_busca){
 		       	if(statusAdocao[i] == 1){
-		       		printf("\nAnimal n„o disponi≠vel para adoÁ„o!\n\n");
+		       		printf("\nAnimal n√£o disponi¬≠vel para ado√ß√£o!\n\n");
 					encontrado = 1;	
 				}else{
 		            printf("\nAnimal Registrado com Sucesso!\n\n");
-		            //printf("cÛdigo: %d\n", idAnimal[i]);
-		            //printf("EspÈcie: %s\n", especieAnimal[i]);
+		            //printf("c√≥digo: %d\n", idAnimal[i]);
+		            //printf("Esp√©cie: %s\n", especieAnimal[i]);
 			        //printf("Idade: %d\n", idadeAnimal[i]);
 			        //printf("Cor: %s\n", corAnimal[i]);
 			        statusAdocao[i] = 1;
@@ -137,7 +140,7 @@ void registrarAdocao(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
 	           }
 	       }
 	       if(encontrado == 0){
-	           printf("\nAnimal com cÛdigo %d n„o encontrado.\n", codigo_busca);
+	           printf("\nAnimal com c√≥digo %d n√£o encontrado.\n", codigo_busca);
 	    }
 	}
 	//system("pause");
@@ -156,7 +159,7 @@ void pesquisarAnimal(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
     } else {
 
     printf("\n==== PESQUISAR ANIMAL ====\n");
-    printf("Informe o cÛdigo do animal: ");
+    printf("Informe o c√≥digo do animal: ");
     scanf("%d", &codigo_busca);
     limparBuffer();
 
@@ -164,11 +167,11 @@ void pesquisarAnimal(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
             if(idAnimal[i] == codigo_busca){
 
             printf("\nAnimal encontrado!\n\n");
-            printf("CÛdigo: %d\n", idAnimal[i]);
-            printf("EspÈcie: %s\n", especieAnimal[i]);
+            printf("C√≥digo: %d\n", idAnimal[i]);
+            printf("Esp√©cie: %s\n", especieAnimal[i]);
             printf("Idade: %d\n", idadeAnimal[i]);
             printf("Cor: %s\n", corAnimal[i]);
-            printf("Status: %s\n", statusAdocao[i] == 0 ? "Disponi≠vel" : "Adotado");
+            printf("Status: %s\n", statusAdocao[i] == 0 ? "Disponi¬≠vel" : "Adotado");
             
 
             encontrado = 1;
@@ -176,7 +179,7 @@ void pesquisarAnimal(char especieAnimal[][TAM], int *quantidadeAnimal, char corA
             }
         }
         if(encontrado == 0){
-            printf("\nAnimal com cÛdigo %d n„o encontrado.\n", codigo_busca);
+            printf("\nAnimal com c√≥digo %d n√£o encontrado.\n", codigo_busca);
         }
     }
     printf("\n\nAPERTE ENTER PARA CONTINUAR...\n");
@@ -197,7 +200,7 @@ void imprimirAdocao(char especieAnimal[][TAM], int *quantidadeAnimal, char corAn
 	}else{
 	printf("\n===== ANIMAIS ADOTADOS =====\n");
     printf("+--------+-------------+-------+------------+\n");
-    printf("| %-6s | %-11s  | %-5s | %-10s |\n", "CÛdigo", "EspÈcie", "Idade", "Cor");
+    printf("| %-6s | %-11s  | %-5s | %-10s |\n", "C√≥digo", "Esp√©cie", "Idade", "Cor");
     printf("+--------+-------------+-------+------------+\n");
 		for(i=0;i<*quantidadeAnimal;i++){
 			if(statusAdocao[i]==1){
@@ -229,11 +232,11 @@ void imprimirDisponiveis(char especieAnimal[][TAM], int *quantidadeAnimal, char 
 		}
 	}
 	if(anidisp==0){
-		printf("\n===== N√O TEMOS ANIMAIS DISPONIVEIS PARA ADO«√O =====\n");	
+		printf("\n===== N√ÉO TEMOS ANIMAIS DISPONIVEIS PARA ADO√á√ÉO =====\n");	
 	}else{
 		printf("\n===== ANIMAIS DISPONIVEIS =====\n");
         printf("+--------+-------------+-------+------------+\n");
-        printf("| %-6s | %-11s  | %-5s | %-10s |\n", "CÛdigo", "EspÈcie", "Idade", "Cor");
+        printf("| %-6s | %-11s  | %-5s | %-10s |\n", "C√≥digo", "Esp√©cie", "Idade", "Cor");
         printf("+--------+-------------+-------+------------+\n");
 		for(i=0;i<*quantidadeAnimal;i++){
 			if(statusAdocao[i]==0){
