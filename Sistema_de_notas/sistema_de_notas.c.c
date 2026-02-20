@@ -57,17 +57,17 @@ int main(){
             while(getchar() != '\n');
 
             if(resultado != 1){
-            printf("\nDigite um n˙mero v·lido!\n");
+            printf("\nDigite um n√∫mero v√°lido!\n");
          }
             else if(id < 1 || id > qtd){
-            printf("Aluno(a) com ID %d n„o encontrado!\n", id);
+            printf("Aluno(a) com ID %d n√£o encontrado!\n", id);
          }
 
     } while(resultado != 1 || id < 1 || id > qtd);
 
         media = calcularMedia(notas[id - 1]);
 
-            printf("MÈdia: %.2f\n", media);
+            printf("M√©dia: %.2f\n", media);
             pausar();
         }
             break;
@@ -91,7 +91,7 @@ int main(){
             printf("Saindo do sistema ...\n");
             break;
         default:
-            printf("OpÁ„o inv·lida!\n");
+            printf("Op√ß√£o inv√°lida!\n");
             pausar();
             break;
         }
@@ -124,7 +124,7 @@ int cadastrarAlunos(char nomes[][MAX_NOME], float notas[][NOTAS], int qtd){
         nomes[qtd][strcspn(nomes[qtd], "\n")] = '\0';
 
         if(!nomeValido(nomes[qtd])){
-            printf("Nome inv·lido! Use apenas letras.\n\n");
+            printf("Nome inv√°lido! Use apenas letras.\n\n");
         }
 
     } while(!nomeValido(nomes[qtd]));
@@ -140,7 +140,7 @@ int cadastrarAlunos(char nomes[][MAX_NOME], float notas[][NOTAS], int qtd){
     while(getchar() != '\n');
 
     if(resultado != 1){
-        printf("\nDigite um n˙mero v·lido!\n");
+        printf("\nDigite um n√∫mero v√°lido!\n");
     }
     else if(notas[qtd][i] < 0 || notas[qtd][i] > 10){
         printf("\nNota deve ser entre 0 e 10!\n");
@@ -158,7 +158,7 @@ int cadastrarAlunos(char nomes[][MAX_NOME], float notas[][NOTAS], int qtd){
 }
 
 int nomeValido(char nome[]) {
-    for(int i = 0; i < nome[i] != '\0'; i++){
+    for(int i = 0; nome[i] != '\0'; i++){
 
         if(nome[i] == '\n'){
             continue;
@@ -187,9 +187,9 @@ void mostrarMenu(){
         printf(" ____________________________________\n");
         printf("|    1 - Cadastrar aluno(a)          |\n");
         printf("|____________________________________|\n");
-        printf("|    2 - Calcular MÈdia do aluno(a)  |\n");
+        printf("|    2 - Calcular M√©dia do aluno(a)  |\n");
         printf("|____________________________________|\n");
-        printf("|    3 - Listar alunos e MÈdias      |\n");
+        printf("|    3 - Listar alunos e M√©dias      |\n");
         printf("|____________________________________|\n");
         printf("|    4 - Listar alunos aprovados     |\n");
         printf("|____________________________________|\n");
@@ -213,7 +213,7 @@ void listarTodos(char nomes[][MAX_NOME], float notas[][NOTAS], int qtd){
 
     for(int i = 0; i < qtd; i++){
         media = calcularMedia(notas[i]);
-            printf("%s | MÈdia: %.2f\n", nomes[i], media);
+            printf("%s | M√©dia: %.2f\n", nomes[i], media);
     }
 }
 }
@@ -254,7 +254,7 @@ void listarFinal(char nomes[][MAX_NOME], float notas[][NOTAS], int qtd){
     for(int i = 0; i < qtd; i++){
         media = calcularMedia(notas[i]);
 
-        if(media >= 5 && media <= 7){
+        if(media >= 5 && media < 7){
             printf("%s\n", nomes[i]);
             encontrou = 1;
         }
